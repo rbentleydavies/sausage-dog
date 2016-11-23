@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "Development SMTP Server",
   "scripts": {
+    "start": "babel-node buildfiles/sausage.js"
   },
   "author": "Ross Bentley-Davies",
   "license": "MIT",
-  "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/rbentleydavies/sausage-dog.git"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rbentleydavies/sausage-dog.git"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
-
+    "babel-cli": "^6.18.0",
+    "eslint": "^3.10.2",
+    "eslint-plugin-import": "^2.2.0"
   }
 }
