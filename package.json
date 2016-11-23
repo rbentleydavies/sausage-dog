@@ -11,7 +11,9 @@
     "type": "git",
     "url": "https://github.com/rbentleydavies/sausage-dog.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "smtp-server": "^1.16.1"
+  },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "eslint": "^3.10.2",
