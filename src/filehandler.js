@@ -18,5 +18,17 @@ function saveFile(from, to, message) {
           console.log('email file was saved');
         });
 }
+function listMailFolders() {
+  if(!fs.existsSync(`messages`))
+  {
+    return `No message received`;
+  }
+  var messageFolderList = '<ul>';
+  fs.readdirSync(`messages`).forEach((folder)=>{
+    messageFolderList += `<li><a href='/messages/${folder}'>${folder}</a></li>`;
+  });
+  messageFolderList += '</ul>';
+  return messageFolderList;
 
-export {saveFile}
+}
+export {saveFile, listMailFolders}
