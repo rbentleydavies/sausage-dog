@@ -15,9 +15,7 @@
     "mailcomposer": "^3.12.0",
     "mailx": "0.0.11",
     "pop-server": "0.0.1",
-    "smtp-server": "^1.16.1"
-  },
-  "devDependencies": {
+    "smtp-server": "^1.16.1",
     "babel-cli": "^6.18.0",
     "babel-loader": "^6.2.8",
     "babel-preset-latest": "^6.16.0",
@@ -29,5 +27,8 @@
     "uuid": "^3.0.0",
     "webpack": "^1.13.3",
     "webpack-dev-middleware": "^1.8.4"
+     },
+  "devDependencies": {
+
   }
 }
