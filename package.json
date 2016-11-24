@@ -12,6 +12,9 @@
     "url": "https://github.com/rbentleydavies/sausage-dog.git"
   },
   "dependencies": {
+    "mailcomposer": "^3.12.0",
+    "mailx": "0.0.11",
+    "pop-server": "0.0.1",
     "smtp-server": "^1.16.1"
   },
   "devDependencies": {
