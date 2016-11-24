@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Development SMTP Server",
   "scripts": {
-    "start": "node sausage.js",
+    "start": "node app/sausage.js",
     "build": "./node_modules/.bin/babel src --out-dir app"
   },
   "author": "Ross Bentley-Davies",
