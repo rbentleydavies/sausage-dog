@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import open from 'open';
 import webpack from 'webpack';
-import config from '../webpack.config.dev';
+import config from './webpack.config.dev';
 import {listMailFolders} from './filehandler.js';
 export default function startwebserver(port){
 const app = express();

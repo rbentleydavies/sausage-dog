@@ -21,7 +21,7 @@ var _webpack = require('webpack');
 
 var _webpack2 = _interopRequireDefault(_webpack);
 
-var _webpackConfig = require('../webpack.config.dev');
+var _webpackConfig = require('./webpack.config.dev');
 
 var _webpackConfig2 = _interopRequireDefault(_webpackConfig);
 
