@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Development SMTP Server",
   "scripts": {
-    "start": "node dist/bundle.js",
-    "build": "./node_modules/.bin/babel src --out-dir dist"
+    "start": "node sausage.js",
+    "build": "./node_modules/.bin/babel src --out-dir app"
   },
   "author": "Ross Bentley-Davies",
   "license": "MIT",
