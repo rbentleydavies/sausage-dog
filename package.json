@@ -4,7 +4,7 @@
   "description": "Development SMTP Server",
   "scripts": {
     "start": "node dist/bundle.js",
-    "build": "babel-node buildfiles/build.js"
+    "build": "./node_modules/.bin/babel src --out-dir dist"
   },
   "author": "Ross Bentley-Davies",
   "license": "MIT",

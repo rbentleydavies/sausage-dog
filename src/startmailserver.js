@@ -1,5 +1,5 @@
 import {SMTPServer} from 'smtp-server';
-import {saveFile} from '../src/filehandler.js';
+import {saveFile} from './filehandler.js';
 
 export default function startmailserver(){
 const server = new SMTPServer({
