@@ -34,7 +34,12 @@ function startwebserver(port) {
   app.get('/messages', function (req, res) {
     res.send((0, _filehandler.listMailFolders)());
   });
-
+  app.get('/mbx/:mbx', function (req, res) {
+    res.send((0, _filehandler.listMailMessages)(req.params.mbx));
+  });
+  app.get('/mbx/:mbx/:msgid', function (req, res) {
+    res.send('You requested message ' + req.params.msgid + ' from mailbox ' + req.params.mbx);
+  });
   app.listen(port, function (err) {
     if (err) {
       console.log(err);

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.listMailFolders = exports.saveFile = undefined;
+exports.listMailMessages = exports.listMailFolders = exports.saveFile = undefined;
 
 var _fs = require('fs');
 
@@ -36,10 +36,25 @@ function listMailFolders() {
   }
   var messageFolderList = '<ul>';
   _fs2.default.readdirSync('messages').forEach(function (folder) {
-    messageFolderList += '<li><a href=\'/messages/' + folder + '\'>' + folder + '</a></li>';
+    messageFolderList += '<li><a href=\'#\' class=\'mailboxlink\'>' + folder + '</a></li>';
   });
   messageFolderList += '</ul>';
   return messageFolderList;
 }
+function listMailMessages(mailbox) {
+  if (!_fs2.default.existsSync('messages')) {
+    return 'No message received';
+  }
+  if (!_fs2.default.existsSync('messages/' + mailbox)) {
+    return 'No message received';
+  }
+  var messagesList = '<ul>';
+  _fs2.default.readdirSync('messages/' + mailbox).forEach(function (message) {
+    messagesList += '<li><a href=\'#\' class=\'messagelink\'>' + mailbox + '/' + message + '</a></li>';
+  });
+  messagesList += '</ul>';
+  return messagesList;
+}
 exports.saveFile = saveFile;
 exports.listMailFolders = listMailFolders;
+exports.listMailMessages = listMailMessages;
