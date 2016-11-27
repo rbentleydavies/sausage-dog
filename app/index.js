@@ -1,10 +1,2 @@
-'use strict';
-
-var _httphandler = require('../src/httphandler.js');
-
-document.addEventListener('DOMContentLoaded', function () {
-  var asyncClient = new _httphandler.HttpClient();
-  asyncClient.get('/messages', function (response) {
-    document.getElementById("messages").innerHTML = response;
-  });
-});
+!function(e){function t(o){if(n[o])return n[o].exports;var r=n[o]={exports:{},id:o,loaded:!1};return e[o].call(r.exports,r,r.exports,t),r.loaded=!0,r.exports}var n={};return t.m=e,t.c=n,t.p="/",t(0)}([function(e,t,n){e.exports=n(1)},function(e,t,n){"use strict";var o=n(2);document.addEventListener("DOMContentLoaded",function(){var e=new o.HttpClient;e.get("/messages",function(e){document.getElementById("messages").innerHTML=e})})},function(e,t){"use strict";Object.defineProperty(t,"__esModule",{value:!0});var n=function(){this.get=function(e,t){var n=new XMLHttpRequest;n.onreadystatechange=function(){4==n.readyState&&200==n.status&&t(n.responseText)},n.open("GET",e,!0),n.send(null)}};t.HttpClient=n}]);
+//# sourceMappingURL=index.js.map

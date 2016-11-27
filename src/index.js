@@ -1,4 +1,4 @@
-import {HttpClient} from '../src/httphandler.js';
+import {HttpClient} from './httphandler.js';
 
 document.addEventListener('DOMContentLoaded', function() {
   var asyncClient=new HttpClient();

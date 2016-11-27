@@ -1,20 +1,16 @@
 import express from 'express';
 import path from 'path';
 import open from 'open';
-import webpack from 'webpack';
-import config from './webpack.config.dev';
 import {listMailFolders} from './filehandler.js';
 export default function startwebserver(port){
 const app = express();
-const compiler = webpack(config);
 
 /* eslint-disable no-console */
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath
-}));
 app.get('/', function(req, res){
-  res.sendFile(path.join(__dirname, '../src/index.html'));
+  res.sendFile(path.join(__dirname, './index.html'));
+});
+app.get('/index.js', function(req, res){
+  res.sendFile(path.join(__dirname, './index.js'));
 });
 app.get('/messages', function(req, res){
   res.send(listMailFolders());

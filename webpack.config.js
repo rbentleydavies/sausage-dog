@@ -1,8 +1,9 @@
-import path from 'path';
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-export default {
+var path = require('path');
+var webpack = require( 'webpack');
+var HtmlWebpackPlugin =require ('html-webpack-plugin');
+
+exports.default = {
   debug:true,
   devtool: 'source-map',
   noInfo: false,
@@ -11,9 +12,9 @@ export default {
   ],
   target: 'web',
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'app'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'index.js'
   },
   plugins: [
     new webpack.optimize.UglifyJsPlugin()
@@ -28,11 +29,5 @@ new HtmlWebpackPlugin({
       {test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
       {test: /\.css$/, loaders: ['style','css']}
     ]
-  },
-    node: {
-      net: 'empty',
-      tls: 'empty',
-      dns: 'empty',
-      fs: 'empty'
-    }
+  }
 }
