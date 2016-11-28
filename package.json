@@ -6,7 +6,8 @@
     "start": "node app/sausage.js",
     "build": "npm-run-all transpile bundle",
     "transpile": "./node_modules/.bin/babel src --out-dir app",
-    "bundle": "webpack"
+    "bundle": "webpack",
+    "devweb": "babel-node buildfiles/devweb.js"
   },
   "author": "Ross Bentley-Davies",
   "license": "MIT",
