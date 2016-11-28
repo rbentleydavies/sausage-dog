@@ -1,8 +1,7 @@
 import express from 'express';
 import path from 'path';
 import open from 'open';
-import {listMailFolders} from './filehandler.js';
-import {listMailMessages} from './filehandler.js';
+import {listMailFolders, listMailMessages} from './filehandler.js';
 export default function startwebserver(port){
 const app = express();
 

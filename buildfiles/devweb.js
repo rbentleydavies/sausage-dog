@@ -3,8 +3,8 @@ import path from 'path';
 import open from 'open';
 import webpack from 'webpack';
 import config from '../webpack.config.dev';
-import {listMailFolders} from '../src/filehandler.js';
-import {listMailMessages} from '../src/filehandler.js';
+import {listMailFolders, listMailMessages} from '../src/filehandler.js';
+
 
 const port = 3000;
 const app = express();
