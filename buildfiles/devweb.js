@@ -2,6 +2,8 @@ import express from 'express';
 import path from 'path';
 import open from 'open';
 import webpack from 'webpack';
+import fs from 'fs';
+import mailx from 'mailx';
 import config from '../webpack.config.dev';
 import {listMailFolders, listMailMessages} from '../src/filehandler.js';
 
@@ -28,7 +30,10 @@ app.get('/mbx/:mbx', function(req, res){
   res.send(listMailMessages(req.params.mbx));
 });
 app.get('/mbx/:mbx/:msgid', function(req, res){
-  res.send(`You requested message ${req.params.msgid} from mailbox ${req.params.mbx}`);
+  var rawMessage = fs.readFileSync(path.join(__dirname, `../messages/${req.params.mbx}/${req.params.msgid}`), 'UTF-8');
+  mailx.parse(rawMessage, function(object, emailMessage){
+      res.send(emailMessage.subject);
+  })
 });
 
 app.listen(port, function(err) {

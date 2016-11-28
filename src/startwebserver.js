@@ -1,6 +1,9 @@
 import express from 'express';
 import path from 'path';
 import open from 'open';
+import fs from 'fs';
+import mailx from 'mailx';
+
 import {listMailFolders, listMailMessages} from './filehandler.js';
 export default function startwebserver(port){
 const app = express();
@@ -19,7 +22,11 @@ app.get('/mbx/:mbx', function(req, res){
   res.send(listMailMessages(req.params.mbx));
 });
 app.get('/mbx/:mbx/:msgid', function(req, res){
-  res.send(`You requested message ${req.params.msgid} from mailbox ${req.params.mbx}`);
+  var rawMessage = fs.readFileSync(path.join(__dirname, `../messages/${req.params.mbx}/${req.params.msgid}`), 'UTF-8');
+  mailx.parse(rawMessage, function(object, emailMessage){
+      res.send(emailMessage.subject);
+  })
+
 });
 app.listen(port, function(err) {
   if(err) {
