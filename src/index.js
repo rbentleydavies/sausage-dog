@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
       asyncClient.get(`/mbx/${mailboxlink.innerHTML}`, function(response){
         document.getElementById("messages").innerHTML = response;
 
-        var messagelinks = document.getElementsByClassName('mailboxlink');
+        var messagelinks = document.getElementsByClassName('messagelink');
     Array.from(messagelinks).forEach((messagelink)=>{
       messagelink.addEventListener('click',function(){
         asyncClient.get(`/mbx/${messagelink.innerHTML}/`, function(response){
