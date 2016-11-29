@@ -6,7 +6,7 @@ import fs from 'fs';
 import mailx from 'mailx';
 import config from '../webpack.config.dev';
 import {listMailFolders, listMailMessages} from '../src/filehandler.js';
-
+import {configureWebService} from '../src/startwebserver.js';
 
 const port = 3000;
 const app = express();
@@ -21,20 +21,10 @@ app.get('/', function(req, res){
   res.sendFile(path.join(__dirname, './index.html'));
 });
 app.get('/index.js', function(req, res){
-  res.sendFile(path.join(__dirname, './index.js'));
+  res.sendFile(path.join(__dirname, '../src/index.js'));
 });
-app.get('/messages', function(req, res){
-  res.send(listMailFolders());
-});
-app.get('/mbx/:mbx', function(req, res){
-  res.send(listMailMessages(req.params.mbx));
-});
-app.get('/mbx/:mbx/:msgid', function(req, res){
-  var rawMessage = fs.readFileSync(path.join(__dirname, `../messages/${req.params.mbx}/${req.params.msgid}`), 'UTF-8');
-  mailx.parse(rawMessage, function(object, emailMessage){
-      res.send(emailMessage.subject);
-  })
-});
+
+configureWebService(app);
 
 app.listen(port, function(err) {
   if(err) {
