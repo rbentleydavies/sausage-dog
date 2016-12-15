@@ -28,7 +28,7 @@ function mailboxlinkClicked(evt){
 
 function messagesLoaded(response){
   messages = JSON.parse(response);
-  var messagesHTML = `<table>`;
+  var messagesHTML = `<table class='table'>`;
   messages.forEach((message) => {
     messagesHTML+=`<tr><td>${message.from.address}</td><td><a href='#' class='messagelink'>${message.subject}</a><input type='hidden' value='${message.messageId}'/></td><td>${message.date}</td></tr>`;
   });
@@ -46,9 +46,9 @@ function messagelinkClicked(evt){
   var selectedMessage = null;
   var messageTableRows = document.getElementsByTagName('tr');
   Array.from(messageTableRows).forEach((messageTableRow)=>{
-    messageTableRow.classList.remove('selected');
+    messageTableRow.classList.remove('active');
     });
-  evt.target.parentElement.parentElement.classList.add('selected');
+  evt.target.parentElement.parentElement.classList.add('active');
   document.getElementById("message").classList.remove('hidden');
   messages.forEach((message)=>{
     if(message.messageId == evt.target.nextSibling.value){
