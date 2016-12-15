@@ -29,6 +29,12 @@ function configureWebService(app){
   app.get('/bootstrap.css', function(req, res){
     res.sendFile(path.join(__dirname, './bootstrap.css'));
   });
+  app.get('/cover.css', function(req, res){
+    res.sendFile(path.join(__dirname, './cover.css'));
+  });
+  app.get('/pug.jpg', function(req, res){
+    res.sendFile(path.join(__dirname, './pug.jpg'));
+  });
   app.get('/mailboxes', function(req, res){
     listMailFolders(req, res);
   });
