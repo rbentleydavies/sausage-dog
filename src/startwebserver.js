@@ -13,6 +13,7 @@ export default function startwebserver(port){
   app.get('/index.js', function(req, res){
     res.sendFile(path.join(__dirname, './index.js'));
   });
+
   configureWebService(app);
   app.listen(port, function(err) {
     if(err) {
@@ -25,6 +26,9 @@ export default function startwebserver(port){
   );
 }
 function configureWebService(app){
+  app.get('/bootstrap.css', function(req, res){
+    res.sendFile(path.join(__dirname, './bootstrap.css'));
+  });
   app.get('/mailboxes', function(req, res){
     listMailFolders(req, res);
   });
@@ -38,5 +42,5 @@ function configureWebService(app){
     })
 
   });
-};
+}
 export {configureWebService}

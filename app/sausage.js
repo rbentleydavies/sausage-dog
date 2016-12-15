@@ -15,5 +15,5 @@ var _startpopserver2 = _interopRequireDefault(_startpopserver);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _startmailserver2.default)();
-(0, _startwebserver2.default)(3000);
+(0, _startwebserver2.default)(80);
 (0, _startpopserver2.default)();

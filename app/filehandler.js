@@ -13,6 +13,10 @@ var _uuid = require('uuid');
 
 var _uuid2 = _interopRequireDefault(_uuid);
 
+var _mailx = require('mailx');
+
+var _mailx2 = _interopRequireDefault(_mailx);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function saveFile(from, to, message) {
@@ -30,31 +34,31 @@ function saveFile(from, to, message) {
     console.log('email file was saved');
   });
 }
-function listMailFolders() {
-  if (!_fs2.default.existsSync('messages')) {
-    return 'No message received';
-  }
-  var messageFolderList = '<ul>';
-  _fs2.default.readdirSync('messages').forEach(function (folder) {
-    messageFolderList += '<li><a href=\'#\' class=\'mailboxlink\'>' + folder + '</a></li>';
-  });
-  messageFolderList += '</ul>';
-  return messageFolderList;
+function listMailFolders(req, res) {
+  var retval = [];
+  if (_fs2.default.existsSync('messages')) {
+    _fs2.default.readdirSync('messages').forEach(function (folder) {
+      retval.push({ name: folder });
+    });
+  };
+  res.send(JSON.stringify(retval));
 }
-function listMailMessages(mailbox) {
-  if (!_fs2.default.existsSync('messages')) {
-    return 'No message received';
-  }
-  if (!_fs2.default.existsSync('messages/' + mailbox)) {
-    return 'No message received';
-  }
-  var messagesList = '<ul>';
-  _fs2.default.readdirSync('messages/' + mailbox).forEach(function (message) {
-    messagesList += '<li><a href=\'#\' class=\'messagelink\'>' + mailbox + '/' + message + '</a></li>';
-  });
-  messagesList += '</ul>';
-  return messagesList;
-}
+function listMailMessages(req, res) {
+  var mailbox = req.params.mbx;
+  var retval = [];
+  if (_fs2.default.existsSync('messages') && _fs2.default.existsSync('messages/' + mailbox)) {
+    var messagesRaw = _fs2.default.readdirSync('messages/' + mailbox);
+    messagesRaw.forEach(function (message) {
+      var messageRaw = _fs2.default.readFileSync('messages/' + mailbox + '/' + message);
+      _mailx2.default.parse(messageRaw, function (object, emailMessage) {
+        retval.push(emailMessage);
+        if (retval.length == messagesRaw.length) {
+          res.send(JSON.stringify(retval));
+        };
+      });
+    });
+  };
+};
 exports.saveFile = saveFile;
 exports.listMailFolders = listMailFolders;
 exports.listMailMessages = listMailMessages;

@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.configureWebService = undefined;
 exports.default = startwebserver;
 
 var _express = require('express');
@@ -17,29 +18,28 @@ var _open = require('open');
 
 var _open2 = _interopRequireDefault(_open);
 
+var _fs = require('fs');
+
+var _fs2 = _interopRequireDefault(_fs);
+
+var _mailx = require('mailx');
+
+var _mailx2 = _interopRequireDefault(_mailx);
+
 var _filehandler = require('./filehandler.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function startwebserver(port) {
   var app = (0, _express2.default)();
-
-  /* eslint-disable no-console */
   app.get('/', function (req, res) {
     res.sendFile(_path2.default.join(__dirname, './index.html'));
   });
   app.get('/index.js', function (req, res) {
     res.sendFile(_path2.default.join(__dirname, './index.js'));
   });
-  app.get('/messages', function (req, res) {
-    res.send((0, _filehandler.listMailFolders)());
-  });
-  app.get('/mbx/:mbx', function (req, res) {
-    res.send((0, _filehandler.listMailMessages)(req.params.mbx));
-  });
-  app.get('/mbx/:mbx/:msgid', function (req, res) {
-    res.send('You requested message ' + req.params.msgid + ' from mailbox ' + req.params.mbx);
-  });
+
+  configureWebService(app);
   app.listen(port, function (err) {
     if (err) {
       console.log(err);
@@ -48,3 +48,21 @@ function startwebserver(port) {
     }
   });
 }
+function configureWebService(app) {
+  app.get('/bootstrap.css', function (req, res) {
+    res.sendFile(_path2.default.join(__dirname, './bootstrap.css'));
+  });
+  app.get('/mailboxes', function (req, res) {
+    (0, _filehandler.listMailFolders)(req, res);
+  });
+  app.get('/mbx/:mbx', function (req, res) {
+    (0, _filehandler.listMailMessages)(req, res);
+  });
+  app.get('/mbx/:mbx/:msgid', function (req, res) {
+    var rawMessage = _fs2.default.readFileSync(_path2.default.join(__dirname, '../messages/' + req.params.mbx + '/' + req.params.msgid), 'UTF-8');
+    _mailx2.default.parse(rawMessage, function (object, emailMessage) {
+      res.send(emailMessage.subject);
+    });
+  });
+}
+exports.configureWebService = configureWebService;
