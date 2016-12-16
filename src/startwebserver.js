@@ -8,6 +8,7 @@ import compression from 'compression';
 import {listMailFolders, listMailMessages} from './filehandler.js';
 export default function startwebserver(port){
   const app = express();
+  app.use(compression());
   app.get('/', function(req, res){
     res.sendFile(path.join(__dirname, './index.html'));
   });
@@ -48,7 +49,7 @@ function configureWebService(app){
         res.send(emailMessage.subject);
     })
   });
-  app.use(compression());
+
 }
 
 export {configureWebService}
