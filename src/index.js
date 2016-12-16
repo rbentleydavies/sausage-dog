@@ -61,17 +61,34 @@ function messagelinkClicked(evt){
   });
   document.getElementById("messageheaders").innerHTML = JSON.stringify(selectedMessage.headers);
   document.getElementById("messagemessageid").innerHTML = selectedMessage.messageId;
-  document.getElementById("messagefrom").innerHTML = JSON.stringify(selectedMessage.from);
+  document.getElementById("messagefrom").innerHTML = `${selectedMessage.from.name}&lt;<a href='mailto:${selectedMessage.from.address}'>${selectedMessage.from.address}</a>&gt;`;
   document.getElementById("messagesubject").innerHTML = selectedMessage.subject;
   document.getElementById("messagetext").innerHTML = `<pre>${selectedMessage.text}</pre>`;
-  document.getElementById("messagehtml").innerHTML = selectedMessage.html;
-  document.getElementById("messagedate").innerHTML = selectedMessage.date;
+  if(selectedMessage.html!=''){
+    document.getElementById("messagehtml").innerHTML = selectedMessage.html;
+  }
+  else {
+    document.getElementById("messagehtml").innerHTML = `<pre>${selectedMessage.text}</pre>`;
+  }
+  if (selectedMessage.date){
+    document.getElementById("messagedate").innerHTML = selectedMessage.date;
+  }
+  else {
+    document.getElementById("messagedate").innerHTML = '&nbsp;';
+  }
   document.getElementById("messageattachments").innerHTML = selectedMessage.attachments;
-  document.getElementById("messageto").innerHTML = JSON.stringify(selectedMessage.to);
-  document.getElementById("messagecc").innerHTML = JSON.stringify(selectedMessage.cc);
-  document.getElementById("messagebcc").innerHTML = JSON.stringify(selectedMessage.bcc);
-
-
+  document.getElementById("messageto").innerHTML = '&nbsp;';
+  selectedMessage.to.forEach((to)=>{
+    document.getElementById("messageto").innerHTML += `${to.name}&lt;<a href='mailto:${to.address}'>${to.address}</a>&gt;`
+  })
+  document.getElementById("messagecc").innerHTML = '&nbsp;';
+  selectedMessage.cc.forEach((cc)=>{
+    document.getElementById("messagecc").innerHTML += `${cc.name}&lt;<a href='mailto:${cc.address}'>${cc.address}</a>&gt;`
+  })
+  document.getElementById("messagebcc").innerHTML = '&nbsp;';
+  selectedMessage.bcc.forEach((bcc)=>{
+    document.getElementById("messagebcc").innerHTML += `${bcc.name}&lt;<a href='mailto:${bcc.address}'>${bcc.address}</a>&gt;`
+  })
 }
 
 

@@ -41,7 +41,7 @@
             <p class="lead">
               <div id='mailboxnav'>
                 <ul>
-                <li><a href='#' class='btn btn-lg'>Select Mailbox</a>
+                <li><a href='#' class='btn btn-lg btn-default'>Select Mailbox</a>
                 <span id='mailboxes'></span>
                 </li>
                 </ul>
@@ -72,17 +72,19 @@
     <div id='message' class='hidden col-md-8'>
           <h2>Message</h2>
 
-    <div>headers</div><div id='messageheaders'></div>
-    <div>messageid</div><div id='messagemessageid'></div>
-    <div>from</div><div id='messagefrom'></div>
-    <div>subject</div><div id='messagesubject'></div>
-    <div>text</div><div id='messagetext'></div>
-    <div>html</div><div id='messagehtml'></div>
-    <div>date</div><div id='messagedate'></div>
-    <div>attachments</div><div id='messageattachments'></div>
-    <div>to</div><div id='messageto'></div>
-    <div>cc</div><div id='messagecc'></div>
-    <div>bcc</div><div id='messagebcc'></div>
+    <div class='hidden'>headers</div><div id='messageheaders' class='hidden'></div>
+    <div class='hidden'>messageid</div><div id='messagemessageid' class='hidden'></div>
+    <div class='col-md-2'>From:</div><div id='messagefrom' class='col-md-10'></div>
+    <div class='col-md-2'>To:</div><div id='messageto' class='col-md-10'></div>
+    <div class='col-md-2'>Cc:</div><div id='messagecc' class='col-md-10'></div>
+    <div class='col-md-2'>Bcc:</div><div id='messagebcc' class='col-md-10'></div>
+    <div class='col-md-2'>Date:</div><div id='messagedate' class='col-md-10'></div>
+    <div class='col-md-2'>Subject:</div><div id='messagesubject' class='col-md-10'></div>
+    <div class='hidden'>text</div><div id='messagetext' class='hidden'></div>
+    <div  class='col-md-12'><div id='messagehtml'></div></div>
+
+    <div class='hidden'>attachments</div><div id='messageattachments' class='hidden'></div>
+
 </div>
   </body>
 </html>
