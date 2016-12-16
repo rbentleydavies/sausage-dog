@@ -19,11 +19,16 @@ function mailboxesLoaded(response){
   Array.from(mailboxlinks).forEach((mailboxlink)=>{
     mailboxlink.addEventListener('click', mailboxlinkClicked);
     });
-};
+}
 
 function mailboxlinkClicked(evt){
-      var asyncClient=new HttpClient();
-      asyncClient.get(`/mbx/${evt.target.innerHTML}`, messagesLoaded);
+  var coverpage = document.getElementById('coverpage');
+  coverpage.classList.add('closed');
+  var covercontent = document.getElementById('covercontent');
+  covercontent.classList.add('hidden');
+
+  var asyncClient=new HttpClient();
+  asyncClient.get(`/mbx/${evt.target.innerHTML}`, messagesLoaded);
 }
 
 function messagesLoaded(response){

@@ -16,11 +16,11 @@
     <link href='cover.css' rel='stylesheet' type='text/css' />
   </head>
   <body>
-    <div class="site-wrapper">
+    <div id="coverpage" class="site-wrapper">
 
       <div class="site-wrapper-inner">
 
-        <div class="cover-container">
+        <div id="covercontent" class="cover-container">
 
           <div class="masthead clearfix">
             <div class="inner">
@@ -39,7 +39,8 @@
             <h1 class="cover-heading">Any mailbox, any time</h1>
             <p class="lead">Quite simply, send a message to any mailbox @emailpug.com and view it here. No setup, no passwords. Perfect for testing or for those times you don't want your mailbox cluttered with verification emails.</p>
             <p class="lead">
-              <a href="#" class="btn btn-lg btn-default">Learn more</a>
+              <div id='mailboxes'></div>
+              <!--<a href="#" class="btn btn-lg btn-default">Learn more</a>-->
             </p>
           </div>
 
@@ -54,10 +55,11 @@
       </div>
 
     </div>
-    <h1>EmailPug<h1>
-    <h2>Mailboxes</h2>
-    <div id='mailboxes'></div>
-    <div class='col-md-4'>
+    <!--
+      <h1>EmailPug<h1>
+      <h2>Mailboxes</h2>
+    -->
+   <div class='col-md-4'>
       <h2>Messages</h2>
       <div id='messages' ></div>
     </div>
