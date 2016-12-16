@@ -3,10 +3,9 @@
  */
 
 /* Links */
-.site-wrapper
-a,
-a:focus,
-a:hover {
+.site-wrapper a,
+.site-wrapper a:focus,
+.site-wrapper a:hover {
   color: #fff;
 }
 
@@ -28,7 +27,6 @@ a:hover {
 html,
 body {
   height: 100%;
-  /*background-color: #333;*/
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -43,7 +41,7 @@ body {
   min-height: 100%;
   -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
           box-shadow: inset 0 0 100px rgba(0,0,0,.5);
-  background-image: url("pug.jpg");
+  /*background-image: url("pug.jpg");*/
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -174,4 +172,76 @@ body {
   .cover-container {
     width: 700px;
   }
+}
+
+
+#mailboxnav
+{
+	margin-top:15px;
+
+  text-shadow: none;
+}
+
+#mailboxnav ul
+{
+	list-style:none;
+	position:relative;
+	margin:0;
+	padding:0
+}
+
+#mailboxnav ul a
+{
+  background-color: #fff;
+	display:block;
+	color:#333;
+	text-decoration:none;
+	line-height:32px;
+	padding:0 15px;
+}
+
+#mailboxnav ul li
+{
+	position:relative;
+	margin:0;
+	padding:0
+}
+
+#mailboxnav ul li.current-menu-item
+{
+	background:#ddd
+}
+/*
+#mailboxnav ul li:hover
+{
+	background:#f6f6f6
+}
+*/
+#mailboxnav ul ul
+{
+	display:none;
+	position:absolute;
+	top:100%;
+	left:0;
+	background:#fff;
+	padding:0;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+#mailboxnav ul ul li
+{
+	float:none;
+	width:200px
+}
+
+#mailboxnav ul ul a
+{
+	line-height:120%;
+	padding:10px 15px
+}
+
+#mailboxnav ul li:hover > span ul
+{
+	display:block
 }
