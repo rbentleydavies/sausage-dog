@@ -3,6 +3,7 @@ import path from 'path';
 import open from 'open';
 import fs from 'fs';
 import mailx from 'mailx';
+import compression from 'compression';
 
 import {listMailFolders, listMailMessages} from './filehandler.js';
 export default function startwebserver(port){
@@ -46,7 +47,8 @@ function configureWebService(app){
     mailx.parse(rawMessage, function(object, emailMessage){
         res.send(emailMessage.subject);
     })
-
   });
+  app.use(compression());
 }
+
 export {configureWebService}

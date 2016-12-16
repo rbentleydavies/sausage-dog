@@ -26,6 +26,10 @@ var _mailx = require('mailx');
 
 var _mailx2 = _interopRequireDefault(_mailx);
 
+var _compression = require('compression');
+
+var _compression2 = _interopRequireDefault(_compression);
+
 var _filehandler = require('./filehandler.js');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -52,6 +56,12 @@ function configureWebService(app) {
   app.get('/bootstrap.css', function (req, res) {
     res.sendFile(_path2.default.join(__dirname, './bootstrap.css'));
   });
+  app.get('/cover.css', function (req, res) {
+    res.sendFile(_path2.default.join(__dirname, './cover.css'));
+  });
+  app.get('/pug.jpg', function (req, res) {
+    res.sendFile(_path2.default.join(__dirname, './pug.jpg'));
+  });
   app.get('/mailboxes', function (req, res) {
     (0, _filehandler.listMailFolders)(req, res);
   });
@@ -64,5 +74,7 @@ function configureWebService(app) {
       res.send(emailMessage.subject);
     });
   });
+  app.use((0, _compression2.default)());
 }
+
 exports.configureWebService = configureWebService;
