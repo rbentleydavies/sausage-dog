@@ -44,10 +44,9 @@ function messagesLoaded(response){
   Array.from(messagelinks).forEach((messagelink)=>{
     messagelink.addEventListener('click', messagelinkClicked);
     });
-} ;
+}
 
 function messagelinkClicked(evt){
-  var asyncClient=new HttpClient();
   var selectedMessage = null;
   var messageTableRows = document.getElementsByTagName('tr');
   Array.from(messageTableRows).forEach((messageTableRow)=>{
@@ -73,9 +72,6 @@ function messagelinkClicked(evt){
   document.getElementById("messagebcc").innerHTML = JSON.stringify(selectedMessage.bcc);
 
 
-  //asyncClient.get(`/mbx/${evt.target.innerHTML}/`, messageLoaded);
 }
 
-function messageLoaded(response){
-  document.getElementById("message").innerHTML = response;
-}
+
