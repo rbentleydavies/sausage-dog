@@ -38,6 +38,7 @@ function messagesLoaded(response){
     messagesHTML+=`<tr><td>${message.from.address}</td><td><a href='#' class='messagelink'>${message.subject}</a><input type='hidden' value='${message.messageId}'/></td><td>${message.date}</td></tr>`;
   });
   messagesHTML += `</table>`;
+  document.getElementById("messages").parentElement.classList.remove('hidden');
   document.getElementById("messages").innerHTML = messagesHTML;
   document.getElementById("message").classList.add('hidden');
   var messagelinks = document.getElementsByClassName('messagelink');
