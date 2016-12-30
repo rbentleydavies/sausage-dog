@@ -3,8 +3,8 @@ import {HttpClient} from './httphandler.js';
 var messages = [];
 
 document.addEventListener('DOMContentLoaded', function() {
-  var asyncClient=new HttpClient();
-  asyncClient.get('/mailboxes', mailboxesLoaded);
+  // var asyncClient=new HttpClient();
+  // asyncClient.get('/mailboxes', mailboxesLoaded);
 });
 
 function mailboxesLoaded(response){
