@@ -36,6 +36,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function startwebserver(port) {
   var app = (0, _express2.default)();
+  app.use((0, _compression2.default)());
   app.get('/', function (req, res) {
     res.sendFile(_path2.default.join(__dirname, './index.html'));
   });
@@ -74,7 +75,6 @@ function configureWebService(app) {
       res.send(emailMessage.subject);
     });
   });
-  app.use((0, _compression2.default)());
 }
 
 exports.configureWebService = configureWebService;
