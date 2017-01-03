@@ -31,6 +31,9 @@ function configureWebService(app){
   app.get('/bootstrap.css', function(req, res){
     res.sendFile(path.join(__dirname, './bootstrap.css'));
   });
+  app.get('/bootstrap.min.css', function(req, res){
+    res.sendFile(path.join(__dirname, './bootstrap.css'));
+  });
   app.get('/cover.css', function(req, res){
     res.sendFile(path.join(__dirname, './cover.css'));
   });
