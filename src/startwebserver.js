@@ -32,7 +32,7 @@ function configureWebService(app){
     res.sendFile(path.join(__dirname, './bootstrap.css'));
   });
   app.get('/bootstrap.min.css', function(req, res){
-    res.sendFile(path.join(__dirname, './bootstrap.css'));
+    res.sendFile(path.join(__dirname, './bootstrap.min.css'));
   });
   app.get('/cover.css', function(req, res){
     res.sendFile(path.join(__dirname, './cover.css'));
