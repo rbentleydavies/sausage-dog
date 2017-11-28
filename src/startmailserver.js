@@ -19,7 +19,9 @@ const server = new SMTPServer({
 
       stream.on('end',function(){
         to.forEach((t)=>{
-          saveFile(from, t.address, message);
+          if(t.address.endsWith("emailpug.com")){
+            saveFile(from, t.address, message);
+          }
         })
         callback();
       });
